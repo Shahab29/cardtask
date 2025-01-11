@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Container Styles */
+    .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        width: 300px;
+        padding: 20px;
+    }
+
+    /* Display Area Styles */
+    .display-1 {
+        margin-bottom: 20px;
+    }
+
+    #display {
+        width: 92%;
+        padding: 10px;
+        font-size: 20px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        text-align: right;
+    }
+
+    #clear {
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 18px;
+        width: 21%;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #clear:hover {
+        background-color: #d32f2f;
+    }
+
+    /* Keypad Styles */
+    .key p {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    input[type="button"] {
+        width: 65px;
+        height: 50px;
+        font-size: 18px;
+        background-color: #e0e0e0;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    input[type="button"]:hover {
+        background-color: #d6d6d6;
+    }
+
+    input[type="button"]:active {
+        background-color: #bfbfbf;
+    }
+
+    /* Empty Button Style */
+    input[type="button"][value=""] {
+        visibility: hidden;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="display-1">
+
+            <p>
+                <input type="text" id="display" readonly>
+
+            </p>
+            </divd>
+        </div>
+        <div class="key">
+            <p>
+                <input type="button" value="1" onclick="addvalue(1)"></input>
+                <input type="button" value="2" onclick="addvalue(2)"></input>
+                <input type="button" value="3" onclick="addvalue(3)"></input>
+                <input type="button" value="4" onclick="addvalue(4)"></input>
+            </p>
+
+            <p>
+                <input type="button" value="5" onclick="addvalue(5)"></input>
+                <input type="button" value="6" onclick="addvalue(6)"></input>
+                <input type="button" value="7" onclick="addvalue(7)"></input>
+                <input type="button" value="8" onclick="addvalue(8)"></input>
+            </p>
+            <p>
+                <input type="button" value="9" onclick="addvalue(9)"></input>
+                <input type="button" value="0" onclick="addvalue(0)"></input>
+                <input type="button" value="+" onclick="addvalue()"></input>
+                <input type="button" value="-" onclick="addvalue()"></input>
+            </p>
+
+
+            <p>
+                <input type="button" value="x" onclick="addvalue(x)"></input>
+                <input type="button" value="/" onclick="addvalue()"></input>
+                <input type="button" value="Cos"></input>
+                <input type="button" value="Sin"></input>
+            </p>
+
+
+            <p>
+                <input type="button" value="tan"></input>
+                <input type="button" value="1/x"></input>
+                <input type="button" value="Sqrt"></input>
+                <button id="clear" onclick="displayclear()">C</button>
+
+            </p>
+
+
+        </div>
+
+        <script>
+function addvalue(num) {
+    let  display = document.getElementById('display');
+    display.value += num;
+
+}
+
+function displayclear() {
+    let  display = document.getElementById('display');
+    displayclear = '';
+    
+}
+        </script>
+</body>
+
+</html>
