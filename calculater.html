@@ -33,7 +33,7 @@
     }
 
     #display {
-        width: 92%;
+        width: 100%;
         padding: 10px;
         font-size: 20px;
         border: 2px solid #ccc;
@@ -45,7 +45,7 @@
         margin-top: 10px;
         padding: 10px;
         font-size: 18px;
-        width: 21%;
+        width: 100%;
         background-color: #f44336;
         color: white;
         border: none;
@@ -87,6 +87,10 @@
     input[type="button"][value=""] {
         visibility: hidden;
     }
+
+    #id {
+        width: 22%;
+    }
 </style>
 
 <body>
@@ -95,45 +99,48 @@
 
             <p>
                 <input type="text" id="display" readonly>
+                <button id="clear" onclick="displayclear()">C</button>
 
             </p>
             </divd>
         </div>
         <div class="key">
             <p>
-                <input type="button" value="1" onclick="addvalue(1)"></input>
-                <input type="button" value="2" onclick="addvalue(2)"></input>
-                <input type="button" value="3" onclick="addvalue(3)"></input>
-                <input type="button" value="4" onclick="addvalue(4)"></input>
+                <input type="button" value="1" onclick="addvalue('1')"></input>
+                <input type="button" value="2" onclick="addvalue('2')"></input>
+                <input type="button" value="3" onclick="addvalue('3')"></input>
+                <input type="button" value="4" onclick="addvalue('4')"></input>
             </p>
 
             <p>
-                <input type="button" value="5" onclick="addvalue(5)"></input>
-                <input type="button" value="6" onclick="addvalue(6)"></input>
-                <input type="button" value="7" onclick="addvalue(7)"></input>
-                <input type="button" value="8" onclick="addvalue(8)"></input>
+                <input type="button" value="5" onclick="addvalue('5')"></input>
+                <input type="button" value="6" onclick="addvalue('6')"></input>
+                <input type="button" value="7" onclick="addvalue('7')"></input>
+                <input type="button" value="8" onclick="addvalue('8')"></input>
             </p>
             <p>
-                <input type="button" value="9" onclick="addvalue(9)"></input>
-                <input type="button" value="0" onclick="addvalue(0)"></input>
-                <input type="button" value="+" onclick="addvalue()"></input>
-                <input type="button" value="-" onclick="addvalue()"></input>
-            </p>
-
-
-            <p>
-                <input type="button" value="x" onclick="addvalue(x)"></input>
-                <input type="button" value="/" onclick="addvalue()"></input>
-                <input type="button" value="Cos"></input>
-                <input type="button" value="Sin"></input>
+                <input type="button" value="9" onclick="addvalue('9')"></input>
+                <input type="button" value="0" onclick="addvalue('0')"></input>
+                <input type="button" value="+" onclick="addvalue('+')"></input>
+                <input type="button" value="-" onclick="addvalue('-')"></input>
             </p>
 
 
             <p>
-                <input type="button" value="tan"></input>
-                <input type="button" value="1/x"></input>
-                <input type="button" value="Sqrt"></input>
-                <button id="clear" onclick="displayclear()">C</button>
+                <input type="button" value="x" onclick="addvalue('x')"></input>
+                <input type="button" value="/" onclick="addvalue('/')"></input>
+                <input type="button" value="Cos" onclick="applyfunction('Cos')"></input>
+                <input type="button" value="Sin" onclick="applyfunction('Sin')"></input>
+            </p>
+
+
+            <p>
+                <input type="button" value="tan" onclick="applyfunction('tan')"></input>
+                <input type="button" value="1/x" onclick="applyfunction('1/x')"></input>
+                <input type="button" value="Sqrt" onclick="applyfunction('Sqrt')"></input>
+                <button type="button" id="dis" onclick="answer()">c</button>
+
+
 
             </p>
 
@@ -141,17 +148,50 @@
         </div>
 
         <script>
-function addvalue(num) {
-    let  display = document.getElementById('display');
-    display.value += num;
+            function addvalue(num) {
+                let display = document.getElementById('display');
+                display.value += num;
 
-}
+            }
 
-function displayclear() {
-    let  display = document.getElementById('display');
-    displayclear = '';
-    
-}
+            function displayclear() {
+                let display = document.getElementById('display');
+                display.value = '';
+
+            }
+
+            function answar() {
+                let display = document.getElementById('display');
+                display.value = eval(display.value);
+            }
+            function applyfunction(func) {
+                let display = document.getElementById('display');
+            } let value = parseFloat(display.value)
+            if (isNaN(value)) {
+                display.value = "error";
+                return;
+            }
+            switch (func) {
+                case "Sin":
+                    display.value = math.sin(value);
+                    break;
+                case "cos":
+                    display.value = math.sin(value);
+                    break;
+                case "Tan":
+                    display.value = math.sin(value);
+                    break;
+                case "inverse":
+                    display.value = 1 / value;
+                    break;
+                case "sqrt":
+                    display.value = math.sqrt(value);
+                    break;
+                default:
+                    display.value = "error";
+            }
+
+
         </script>
 </body>
 
