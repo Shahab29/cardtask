@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order System</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            .item {
+                margin-bottom: 10px;
+            }
+
+            .order-summary {
+                margin-top: 20px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                background-color: #f9f9f9;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="item">
+            <label for="item1">kilogram: </label>
+            <input type="number" id="item1" min="0" value="0">
+        </div>
+        <div class="item">
+            <label for="item2">pound </label>
+            <input type="number" id="item2" min="0" value="0">
+        </div>
+        <div class="item">
+            <label for="item3">milligram </label>
+            <input type="number" id="item3" min="0" value="0">
+        </div>
+        <div class="item">
+            <label for="item4">ton </label>
+            <input type="number" id="item4" min="0" value="0">
+        </div>
+        <div class="item">
+            <label for="item5">ounce </label>
+            <input type="number" id="item5" min="0" value="0">
+        </div>
+        <button onclick="place()">converter</button>
+
+        <div class="order-summary" id="orderSummary">
+            <h2>Order Summary</h2>
+            <p>No items selected.</p>
+        </div>
+
+
+    </body>
+
+    </html>
+
+
+    <script>
+
+
+
+        function place() {
+            const kilogramkg = parseInt(document.getElementById('item1').value);
+            const poundp = parseInt(document.getElementById('item2').value)
+            const milligramm = parseInt(document.getElementById('item3').value)
+            const tonn = parseInt(document.getElementById('item4').value)
+            const ouncee = parseInt(document.getElementById('item5').value)
+
+
+            const kilogram = 1;
+            const pound = 2.2046;
+            const milligram = 1000000;
+            const ton = 0.00110231;
+            const ounce = 35.274;
+
+            const totalkilogram = kilogram * kilogramkg;
+            const totalpound = pound * poundp;
+            const totalmilligram = milligram * milligramm;
+            const totalton = ton * tonn;
+            const totalounce = ounce * ounce;
+
+            const grandTotal = totalkilogram + totalpound + totalmilligram + totalton + totalounce;
+
+
+            const orderSummary = document.getElementById('orderSummary');
+            if (grandTotal > 0) {
+                orderSummary.innerHTML = `
+      <h2>Order Summary</h2>
+      <p>kilogram: ${kilogramkg} x $${kilogram} = $${totalkilogram}</p>
+      <p>pound: ${poundp} x $${pound} = $${totalpound}</p>
+      <p>milligram: ${milligramm} x $${milligram} = $${totalmilligram}</p>
+       <p>ton: ${tonn} x $${ton} = $${totalton}</p>
+        <p>ounce: ${ouncee} x $${ounce} = $${totalounce}</p>
+
+      <h3>Total: $${grandTotal}</h3>
+    `;
+            } else {
+                orderSummary.innerHTML = `
+      <h2>Order Summary</h2>
+      <p>No items selected.</p>
+    `;
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
