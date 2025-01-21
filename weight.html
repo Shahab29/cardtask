@@ -61,8 +61,10 @@
         <div class="order-summary" id="orderSummary">
             <h2>Order Summary</h2>
             <p>No items selected.</p>
+
         </div>
 
+    
 
     </body>
 
@@ -74,11 +76,14 @@
 
 
         function place() {
+
+            // let input = document.getElementById("orderSummary").value;
+
             const kilogramkg = parseInt(document.getElementById('item1').value);
-            const poundp = parseInt(document.getElementById('item2').value)
-            const milligramm = parseInt(document.getElementById('item3').value)
-            const tonn = parseInt(document.getElementById('item4').value)
-            const ouncee = parseInt(document.getElementById('item5').value)
+            const poundp = parseInt(document.getElementById('item2').value);
+            const milligramm = parseInt(document.getElementById('item3').value);
+            const tonn = parseInt(document.getElementById('item4').value);
+            const ouncee = parseInt(document.getElementById('item5').value);
 
 
             const kilogram = 1;
@@ -87,34 +92,65 @@
             const ton = 0.00110231;
             const ounce = 35.274;
 
-            const totalkilogram = kilogram * kilogramkg;
-            const totalpound = pound * poundp;
-            const totalmilligram = milligram * milligramm;
-            const totalton = ton * tonn;
-            const totalounce = ounce * ounce;
+            const totalkilogram = kilogram / kilogramkg;
+            const totalpound = pound / poundp;
+            const totalmilligram = milligram / milligramm;
+            const totalton = ton / tonn;
+            const totalounce = ounce / ounce;
 
-            const grandTotal = totalkilogram + totalpound + totalmilligram + totalton + totalounce;
+          
+          
+            document.getElementById('item1').innerHTML = `Kilograms: ${totalkilogram} kg`;
+    document.getElementById('item2').innerHTML = `Pounds to Kilograms: ${totalpound} kg`;
+    document.getElementById('item3').innerHTML = `Milligrams to Kilograms: ${totalmilligram} kg`;
+    document.getElementById('item4').innerHTML = `Tons to Kilograms: ${totalton} kg`;
+    document.getElementById('item5').innerHTML = `Ounces to Kilograms: ${totalounce} kg`;
+}
+            
 
 
-            const orderSummary = document.getElementById('orderSummary');
-            if (grandTotal > 0) {
-                orderSummary.innerHTML = `
-      <h2>Order Summary</h2>
-      <p>kilogram: ${kilogramkg} x $${kilogram} = $${totalkilogram}</p>
-      <p>pound: ${poundp} x $${pound} = $${totalpound}</p>
-      <p>milligram: ${milligramm} x $${milligram} = $${totalmilligram}</p>
-       <p>ton: ${tonn} x $${ton} = $${totalton}</p>
-        <p>ounce: ${ouncee} x $${ounce} = $${totalounce}</p>
+        
 
-      <h3>Total: $${grandTotal}</h3>
-    `;
-            } else {
-                orderSummary.innerHTML = `
-      <h2>Order Summary</h2>
-      <p>No items selected.</p>
-    `;
-            }
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+        
+    
+        
 
 
 
