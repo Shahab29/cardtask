@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
     }
 
-    .popup.open-popup {
+    .open-popup {
         display: block;
     }
 
@@ -47,24 +47,27 @@
 <body>
     <div class="container">
         <h1 class="text-center">Sign Up</h1>
-    
-        <form name="fm" onsubmit="return validate();">
+
+        <form name="fm">
             <table class="table">
                 <tr>
                     <td>
-                        <input type="text" class="form-control" name="txtname" id="txtname" placeholder="Enter username">
+                        <input type="text" class="form-control" name="txtname" id="txtname"
+                            placeholder="Enter username">
                         <span id="err1" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="email" class="form-control" name="inpemail" id="inpemail" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="inpemail" id="inpemail"
+                            placeholder="Enter Email">
                         <span id="err2" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="password" class="form-control" name="inpepass" id="inpepass" placeholder="Enter password">
+                        <input type="password" class="form-control" name="inpepass" id="inpepass"
+                            placeholder="Enter password">
                         <span id="err3" class="text-danger"></span>
                     </td>
                 </tr>
@@ -75,7 +78,7 @@
                 </tr>
             </table>
         </form>
-    
+
         <div class="popup" id="popup" style="display: none;">
             <img src="pngtree-green-check-mark-icon-design-template-vector-png-image_3136287.jpg" alt="">
             <h1>Thank you</h1>
@@ -83,70 +86,76 @@
             <button class="btn btn-success" onclick="closePopup()">Close</button>
         </div>
     </div>
-    
+
     <script>
         function validate() {
+
+            let popup = document.getElementById('popup');
+
             let username = fm.txtname.value;
             let email = fm.inpemail.value;
             let pass = fm.inpepass.value;
-    
-            let name_patt = /^[a-zA-Z0-9_]{3,15}$/; 
-            let email_patt = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-            let pass_patt = /^[A-Za-z0-9@#$%^&+=]{6,}$/; 
-    
-            let isValid = true;
-    
-         
+            let invalid = true;
+
+            let name_patt = /^[a-zA-Z]\w{3,}$/;
+            let email_patt = /^[A-Za-z0-9._%+-]+@[A-Za-z]+\.[A-Za-z]{2,}$/;
+            let pass_patt = /^[A-Za-z0-9]\w{3,14}$/;
+
+
+
+
             if (username.length === 0) {
                 document.getElementById('txtname').style.borderColor = "red";
                 document.getElementById('err1').innerText = "Name field is empty";
-                isValid = false;
-            } else if (!name_patt.test(username)) {
+                invalid = true;
+            } else if (name_patt.test(username) === false) {
                 document.getElementById('txtname').style.borderColor = "red";
                 document.getElementById('err1').innerText = "Invalid username format";
-                isValid = false;
+                invalid = false;
             } else {
                 document.getElementById('txtname').style.borderColor = "black";
                 document.getElementById('err1').innerText = "";
             }
-    
+
             if (email.length === 0) {
                 document.getElementById('inpemail').style.borderColor = "red";
                 document.getElementById('err2').innerText = "Email field is empty";
-                isValid = false;
-            } else if (!email_patt.test(email)) {
+                invalid = false;
+            } else if (email_patt.test(email) === false) {
                 document.getElementById('inpemail').style.borderColor = "red";
                 document.getElementById('err2').innerText = "Invalid email format";
-                isValid = false;
+                invalid = false;
             } else {
                 document.getElementById('inpemail').style.borderColor = "black";
                 document.getElementById('err2').innerText = "";
             }
-    
+
             if (pass.length === 0) {
                 document.getElementById('inpepass').style.borderColor = "red";
                 document.getElementById('err3').innerText = "Password field is empty";
-                isValid = false;
-            } else if (!pass_patt.test(pass)) {
+                invalid = false;
+            } else if (pass_patt.test(pass) === false) {
                 document.getElementById('inpepass').style.borderColor = "red";
                 document.getElementById('err3').innerText = "Invalid password format";
-                isValid = false;
+                invalid = false;
             } else {
                 document.getElementById('inpepass').style.borderColor = "black";
                 document.getElementById('err3').innerText = "";
             }
-    
-            if (isValid) {
-                document.getElementById('popup').style.display = "block";
+
+            if (invalid === true) {
+                popup.classList.add('open-popup');
             }
-            return false;
+         
         }
-    
+
         function closePopup() {
-            document.getElementById('popup').style.display = "none";
+            popup.classList.remove('open-popup');
         }
+
+          
     </script>
-    
+
     </script>
 </body>
 
