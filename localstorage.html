@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="data" placeholder="enter name">
+    <br>
+<button  value="savedata" onclick="savedata()">save name </button>
+    <br>
+    <button value="getdata" onclick="getdata()">get name </button>
+    <br>
+    <button value="removename" onclick="removename()">remove name </button>
+
+    <script>
+
+        function savedata() {
+
+            let user = document.getElementById('data')
+            localStorage.setItem('username', user)
+            console.log(user)
+            
+        }
+        function getdata() {
+            let user = localStorage.getItem('username')
+            if(user != null){
+                alert(` username is ${user} `);
+            }else{
+                alert(`no name stored`)
+            }
+        }
+
+        function removename() {
+            localStorage.removeItem('username')
+        }
+          
+
+
+
+
+    </script>
+
+</body>
+</html>

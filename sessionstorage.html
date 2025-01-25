@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="body">
+    <style>
+.light-mode{
+    background-color: white;
+    color: black;
+}
+.dark-mode{
+    background-color: black;
+    color: white;
+
+}
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px; 
+}
+    </style>
+
+<button onclick="applytheme('light-mode')">light</button>
+<button onclick="applytheme('dark-mode')">dark</button>
+
+<script>
+
+function applytheme(theme) {
+    document.body.className =theme
+    sessionStorage.setItem('theme', theme);
+}
+
+const savedtheme = sessionStorage.getItem('theme');
+if(savedtheme != null){
+    applytheme(savedtheme);
+}
+
+
+
+</script>
+
+</body>
+</html>
